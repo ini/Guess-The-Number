@@ -7,12 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8966842A1ABBE3C600198959 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 896684291ABBE3C600198959 /* Images.xcassets */; };
+		896684311ABC9AC800198959 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 896684301ABC9AC800198959 /* info.png */; };
+		896684331ABCA72600198959 /* OptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896684321ABCA72600198959 /* OptionController.swift */; };
+		896684351ABCBB5E00198959 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 896684341ABCBB5E00198959 /* iAd.framework */; };
 		89A78DEF1ABA35110058D4F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A78DEE1ABA35110058D4F2 /* AppDelegate.swift */; };
 		89A78DF11ABA35110058D4F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A78DF01ABA35110058D4F2 /* ViewController.swift */; };
 		89A78DF41ABA35110058D4F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89A78DF21ABA35110058D4F2 /* Main.storyboard */; };
-		89A78DF61ABA35110058D4F2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89A78DF51ABA35110058D4F2 /* Images.xcassets */; };
-		89A78DF91ABA35110058D4F2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89A78DF71ABA35110058D4F2 /* LaunchScreen.xib */; };
 		89A78E051ABA35110058D4F2 /* Guess_The_NumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A78E041ABA35110058D4F2 /* Guess_The_NumberTests.swift */; };
+		89A78E0F1ABA357A0058D4F2 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A78E0E1ABA357A0058D4F2 /* CircleButton.swift */; };
+		89CA9CFB1ABBBCE200DA43A0 /* VictoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CA9CFA1ABBBCE200DA43A0 /* VictoryController.swift */; };
+		89E19CCF1ABD3DF400A5B93D /* thumbs_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E19CCE1ABD3DF400A5B93D /* thumbs_up.png */; };
+		89E19CD21ABD3FAC00A5B93D /* thumbs_sideways.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E19CD01ABD3FAC00A5B93D /* thumbs_sideways.png */; };
+		89E19CD31ABD3FAC00A5B93D /* thumbs_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E19CD11ABD3FAC00A5B93D /* thumbs_down.png */; };
+		89E19CD51ABDCA6E00A5B93D /* StatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E19CD41ABDCA6E00A5B93D /* StatsController.swift */; };
+		89E19CD71ABF626200A5B93D /* Messages.txt in Resources */ = {isa = PBXBuildFile; fileRef = 89E19CD61ABF626200A5B93D /* Messages.txt */; };
+		89E19CD91ABF682200A5B93D /* MessagesWrongRange.txt in Resources */ = {isa = PBXBuildFile; fileRef = 89E19CD81ABF682200A5B93D /* MessagesWrongRange.txt */; };
+		89E19CDB1ABF68F100A5B93D /* VictoryMessages.txt in Resources */ = {isa = PBXBuildFile; fileRef = 89E19CDA1ABF68F100A5B93D /* VictoryMessages.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +37,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		896684291ABBE3C600198959 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
+		896684301ABC9AC800198959 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		896684321ABCA72600198959 /* OptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionController.swift; sourceTree = "<group>"; };
+		896684341ABCBB5E00198959 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		89A78DE91ABA35110058D4F2 /* Guess The Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guess The Number.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A78DED1ABA35110058D4F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89A78DEE1ABA35110058D4F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89A78DF01ABA35110058D4F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		89A78DF31ABA35110058D4F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		89A78DF51ABA35110058D4F2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		89A78DF81ABA35110058D4F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		89A78DFE1ABA35110058D4F2 /* Guess The NumberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Guess The NumberTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A78E031ABA35110058D4F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89A78E041ABA35110058D4F2 /* Guess_The_NumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess_The_NumberTests.swift; sourceTree = "<group>"; };
+		89A78E0E1ABA357A0058D4F2 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		89CA9CFA1ABBBCE200DA43A0 /* VictoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VictoryController.swift; sourceTree = "<group>"; };
+		89CA9CFC1ABBCFC000DA43A0 /* Confetti.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Confetti.gif; sourceTree = "<group>"; };
+		89E19CCE1ABD3DF400A5B93D /* thumbs_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_up.png; sourceTree = "<group>"; };
+		89E19CD01ABD3FAC00A5B93D /* thumbs_sideways.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_sideways.png; sourceTree = "<group>"; };
+		89E19CD11ABD3FAC00A5B93D /* thumbs_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_down.png; sourceTree = "<group>"; };
+		89E19CD41ABDCA6E00A5B93D /* StatsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsController.swift; sourceTree = "<group>"; };
+		89E19CD61ABF626200A5B93D /* Messages.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Messages.txt; sourceTree = "<group>"; };
+		89E19CD81ABF682200A5B93D /* MessagesWrongRange.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MessagesWrongRange.txt; sourceTree = "<group>"; };
+		89E19CDA1ABF68F100A5B93D /* VictoryMessages.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VictoryMessages.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				896684351ABCBB5E00198959 /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,9 +80,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8966842D1ABC8BF500198959 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				89CA9CFC1ABBCFC000DA43A0 /* Confetti.gif */,
+				896684301ABC9AC800198959 /* info.png */,
+				89E19CCE1ABD3DF400A5B93D /* thumbs_up.png */,
+				89E19CD01ABD3FAC00A5B93D /* thumbs_sideways.png */,
+				89E19CD11ABD3FAC00A5B93D /* thumbs_down.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		89A78DE01ABA35110058D4F2 = {
 			isa = PBXGroup;
 			children = (
+				896684341ABCBB5E00198959 /* iAd.framework */,
 				89A78DEB1ABA35110058D4F2 /* Guess The Number */,
 				89A78E011ABA35110058D4F2 /* Guess The NumberTests */,
 				89A78DEA1ABA35110058D4F2 /* Products */,
@@ -78,10 +115,13 @@
 			isa = PBXGroup;
 			children = (
 				89A78DEE1ABA35110058D4F2 /* AppDelegate.swift */,
+				89A78E0E1ABA357A0058D4F2 /* CircleButton.swift */,
 				89A78DF01ABA35110058D4F2 /* ViewController.swift */,
+				89CA9CFA1ABBBCE200DA43A0 /* VictoryController.swift */,
+				896684321ABCA72600198959 /* OptionController.swift */,
+				89E19CD41ABDCA6E00A5B93D /* StatsController.swift */,
 				89A78DF21ABA35110058D4F2 /* Main.storyboard */,
-				89A78DF51ABA35110058D4F2 /* Images.xcassets */,
-				89A78DF71ABA35110058D4F2 /* LaunchScreen.xib */,
+				896684291ABBE3C600198959 /* Images.xcassets */,
 				89A78DEC1ABA35110058D4F2 /* Supporting Files */,
 			);
 			path = "Guess The Number";
@@ -91,6 +131,10 @@
 			isa = PBXGroup;
 			children = (
 				89A78DED1ABA35110058D4F2 /* Info.plist */,
+				89E19CD61ABF626200A5B93D /* Messages.txt */,
+				89E19CD81ABF682200A5B93D /* MessagesWrongRange.txt */,
+				89E19CDA1ABF68F100A5B93D /* VictoryMessages.txt */,
+				8966842D1ABC8BF500198959 /* Images */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -161,6 +205,12 @@
 				TargetAttributes = {
 					89A78DE81ABA35110058D4F2 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = C6TM6MEKXX;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+						};
 					};
 					89A78DFD1ABA35110058D4F2 = {
 						CreatedOnToolsVersion = 6.2;
@@ -192,9 +242,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				896684311ABC9AC800198959 /* info.png in Resources */,
+				89E19CDB1ABF68F100A5B93D /* VictoryMessages.txt in Resources */,
+				8966842A1ABBE3C600198959 /* Images.xcassets in Resources */,
+				89E19CD71ABF626200A5B93D /* Messages.txt in Resources */,
+				89E19CD31ABD3FAC00A5B93D /* thumbs_down.png in Resources */,
 				89A78DF41ABA35110058D4F2 /* Main.storyboard in Resources */,
-				89A78DF91ABA35110058D4F2 /* LaunchScreen.xib in Resources */,
-				89A78DF61ABA35110058D4F2 /* Images.xcassets in Resources */,
+				89E19CCF1ABD3DF400A5B93D /* thumbs_up.png in Resources */,
+				89E19CD91ABF682200A5B93D /* MessagesWrongRange.txt in Resources */,
+				89E19CD21ABD3FAC00A5B93D /* thumbs_sideways.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89A78E0F1ABA357A0058D4F2 /* CircleButton.swift in Sources */,
+				89E19CD51ABDCA6E00A5B93D /* StatsController.swift in Sources */,
 				89A78DF11ABA35110058D4F2 /* ViewController.swift in Sources */,
+				89CA9CFB1ABBBCE200DA43A0 /* VictoryController.swift in Sources */,
+				896684331ABCA72600198959 /* OptionController.swift in Sources */,
 				89A78DEF1ABA35110058D4F2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,14 +302,6 @@
 				89A78DF31ABA35110058D4F2 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		89A78DF71ABA35110058D4F2 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				89A78DF81ABA35110058D4F2 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -336,9 +388,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Guess The Number/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -346,9 +403,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Guess The Number/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -405,6 +467,7 @@
 				89A78E0A1ABA35110058D4F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89A78E0B1ABA35110058D4F2 /* Build configuration list for PBXNativeTarget "Guess The NumberTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +476,7 @@
 				89A78E0D1ABA35110058D4F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -14,8 +14,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+        // Retrieves message text files from the internet
+        var messages = String(contentsOfURL: NSURL(string: "http://sites.google.com/site/insidevelopment/home/messages.txt")!, encoding: NSUTF8StringEncoding, error: nil)
+        var messagesWrongRange = String(contentsOfURL: NSURL(string: "http://sites.google.com/site/insidevelopment/home/messagesWrongRange.txt")!, encoding: NSUTF8StringEncoding, error: nil)
+        var victoryMessages = String(contentsOfURL: NSURL(string: "http://sites.google.com/site/insidevelopment/home/victoryMessages.txt")!, encoding: NSUTF8StringEncoding, error: nil)
+        
+        if (messages != nil)
+        {
+            messages?.writeToFile(NSBundle.mainBundle().pathForResource("Messages", ofType: "txt")!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        }
+        if (messagesWrongRange != nil)
+        {
+            messagesWrongRange?.writeToFile(NSBundle.mainBundle().pathForResource("MessagesWrongRange", ofType: "txt")!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        }
+        if (victoryMessages != nil)
+        {
+            victoryMessages?.writeToFile(NSBundle.mainBundle().pathForResource("VictoryMessages", ofType: "txt")!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        }
+        
         return true
     }
 
