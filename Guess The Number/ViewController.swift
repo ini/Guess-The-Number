@@ -7,60 +7,113 @@
 //
 
 import UIKit
-import Foundation
 import iAd
+import Foundation
 
 class NumberGenerator
 {
     var randomInteger = 0
     var min = 0
     var max = 0
+    var guessRangeMin = 0
+    var guessRangeMax = 0
     var numGuesses = 0
+    let defaults = NSUserDefaults.standardUserDefaults()
     
-    //creates arrays of messages from saved text files
-    var messages = String(contentsOfFile: NSBundle.mainBundle().pathForResource("Messages", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)?.componentsSeparatedByString("\n")
-    var messagesWrongRange = String(contentsOfFile: NSBundle.mainBundle().pathForResource("MessagesWrongRange", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)?.componentsSeparatedByString("\n")
-    var victoryMessages = String(contentsOfFile: NSBundle.mainBundle().pathForResource("VictoryMessages", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)?.componentsSeparatedByString("\n")
+    // Creates arrays of messages from saved text files
+    var messages = String(contentsOfFile: NSBundle.mainBundle().pathForResource("Messages", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!.componentsSeparatedByString("\n")
+    var messagesWrongRange = String(contentsOfFile: NSBundle.mainBundle().pathForResource("MessagesWrongRange", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!.componentsSeparatedByString("\n")
+    var victoryMessages = String(contentsOfFile: NSBundle.mainBundle().pathForResource("VictoryMessages", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!.componentsSeparatedByString("\n")
     
     init(minimum: Int, maximum: Int)
     {
         min = minimum
         max = maximum
-        randomInteger = randomInt(min, max: max)
+        guessRangeMin = min
+        guessRangeMax = max
+        
+        if defaults.dictionaryForKey("guessHistory")?.count == nil
+        {
+            // Creates default dictionary of stored guesses
+            var guessHistory : [String: Int] = [:]
+            for index in min ... max
+            {
+                guessHistory[String(index)] = 1
+            }
+            defaults.setObject(guessHistory, forKey: "guessHistory")
+        }
+        
+        generateNewNumber()
     }
     
     func randomInt(min: Int, max: Int) -> Int
     {
+        // Generates random number within the given range, inclusive
         return min + Int(arc4random_uniform(UInt32(max - min + 1)))
     }
     
     func guess(guessedNumber:Int) -> (Bool, Int)
     {
         numGuesses++
+        var guessHistory = defaults.objectForKey("guessHistory") as! [String: Int]
+        if guessedNumber >= min && guessedNumber <= max
+        {
+            guessHistory[String(guessedNumber)] = guessHistory[String(guessedNumber)]! + 1
+        }
+        defaults.setObject(guessHistory, forKey: "guessHistory")
+        
         if guessedNumber > max || guessedNumber < min
         {
             return (false, 2)
         }
         else if randomInteger < guessedNumber
         {
+            guessRangeMax = guessedNumber - 1
             return (false, -1)
         }
         else if randomInteger > guessedNumber
         {
+            guessRangeMin = guessedNumber + 1
             return (false, 1)
         }
+        println(String(guessRangeMin) + ", " + String(guessRangeMax))
         return (true, 0)
     }
     
-    func generateNewNumber()
+    // Algorithm that, based on past history of guesses, generates numbers that the user is unlikely to guess.
+    func generateNewNumber() -> Int
     {
-        var num = randomInt(min, max: max + 1)
-        if min <= 42 && max >= 42 && num == max + 1
+        var num = 0, sum = 0, cumulative = min - 1, largest = 0, guessHistory = defaults.objectForKey("guessHistory") as! [String: Int]
+        for (guess, number) in guessHistory
         {
-            num = 42 // Bias towards the number 42.
+            if largest < number
+            {
+                largest = number
+            }
         }
+
+        for index in min ... max
+        {
+            sum += largest + 1 - guessHistory[String(index)]!
+        }
+        
+        num = randomInt(min, max: min + sum - 1)
+
+        // Uses uniform probability distribution to generates a random number with the probability generating any specific number inversely proportional to the frequency at which the number has been guessed
+        for index in min ... max
+        {
+            cumulative += largest + 1 - guessHistory[String(index)]!
+            if num <= cumulative
+            {
+                num = index
+                break
+            }
+        }
+        
         randomInteger = num
         numGuesses = 0
+        println(num)
+        return num
     }
     
     func message(type: Int) -> String
@@ -68,13 +121,13 @@ class NumberGenerator
         switch type
         {
             case -2: // You guessed the number
-                return victoryMessages![randomInt(0, max: victoryMessages!.count - 1)]
+                return victoryMessages[randomInt(0, max: victoryMessages.count - 1)]
             case -1: // You guessed too high
-                return messages![randomInt(0, max: messages!.count - 1)].stringByReplacingOccurrencesOfString("/direction/", withString: "lower", options: NSStringCompareOptions(), range: nil)
+                return messages[randomInt(0, max: messages.count - 1)].stringByReplacingOccurrencesOfString("/direction/", withString: "lower", options: NSStringCompareOptions(), range: nil)
             case 1: // You guessed too low
-                return messages![randomInt(0, max: messages!.count - 1)].stringByReplacingOccurrencesOfString("/direction/", withString: "higher", options: NSStringCompareOptions(), range: nil)
+                return messages[randomInt(0, max: messages.count - 1)].stringByReplacingOccurrencesOfString("/direction/", withString: "higher", options: NSStringCompareOptions(), range: nil)
             case 2: // You guessed in the wrong range
-                return messagesWrongRange![randomInt(0, max: messagesWrongRange!.count - 1)]
+                return messagesWrongRange[randomInt(0, max: messagesWrongRange.count - 1)]
             default:
                 return ""
         }
@@ -82,18 +135,23 @@ class NumberGenerator
     
 }
 
-class ViewController: UIViewController {
-    
+class ViewController: UIViewController, OEEventsObserverDelegate
+{
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var guessLabel: UILabel!
     @IBOutlet weak var textbox: UITextField!
+    @IBOutlet weak var guessButton: CircleButton!
+
     var numGen = NumberGenerator(minimum: 1, maximum: 100)
+    var openEarsEventsObserver = OEEventsObserver()
+    var timer: NSTimer = NSTimer()
+    var held: Bool = false
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        println(defaults.dictionaryForKey("stats"))
+        openEarsEventsObserver.delegate = self
         addGuessButtonOnKeyboard()
         canDisplayBannerAds = true
     }
@@ -111,7 +169,7 @@ class ViewController: UIViewController {
     
     @IBAction func infoClicked(sender: AnyObject)
     {
-        let options = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Options") as OptionController
+        let options = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Options") as! OptionController
         presentViewController(options, animated: true, completion: nil)
     }
     
@@ -136,7 +194,7 @@ class ViewController: UIViewController {
         items.addObject(flexSpace)
         items.addObject(done)
         
-        guessToolbar.items = items
+        guessToolbar.items = items as [AnyObject]
         guessToolbar.sizeToFit()
         textbox.inputAccessoryView = guessToolbar
     }
@@ -145,9 +203,11 @@ class ViewController: UIViewController {
     {
         self.textbox.resignFirstResponder()
         var numGuess = textbox.text.toInt()
-        if numGuess != nil //increments guessLabel and tests to see if number was guessed
+        if numGuess != nil //increments guessLabel and tests to see if the correct number was guessed
         {
             var result = numGen.guess(numGuess!)
+            println(String(numGen.guessRangeMin) + ", " + String(numGen.guessRangeMax))
+
             if numGen.numGuesses == 1
             {
                 guessLabel.text = "1 Guess"
@@ -176,21 +236,56 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func guessHeld(sender: AnyObject)
+    {
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: Selector("voice"), userInfo: nil, repeats: false)
+        self.textbox.text = ""
+        if OEPocketsphinxController.sharedInstance().isListening
+        {
+            OEPocketsphinxController.sharedInstance().stopListening()
+        }
+    }
+    
     @IBAction func guessed(sender: AnyObject)
     {
-        textbox.becomeFirstResponder()
+        timer.invalidate()
+        if !held
+        {
+            textbox.becomeFirstResponder()
+            if OEPocketsphinxController.sharedInstance().isListening
+            {
+                OEPocketsphinxController.sharedInstance().stopListening()
+            }
+        }
+        held = false
     }
+    
     @IBAction func clearText(sender: AnyObject)
     {
         textbox.text = ""
     }
     
+    func voice()
+    {
+        held = true
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        OEPocketsphinxController.sharedInstance().setActive(true, error: nil)
+        OEPocketsphinxController.sharedInstance().stopListening()
+        OEPocketsphinxController.sharedInstance().startListeningWithLanguageModelAtPath(appDelegate.lmPath, dictionaryAtPath: appDelegate.dicPath, acousticModelAtPath: OEAcousticModel.pathToModel("AcousticModelEnglish"), languageModelIsJSGF: false)
+        
+        self.guessButton.setTitle("", forState: .Normal)
+        self.guessButton.setBackgroundImage(UIImage(named: "microphone"), forState: .Highlighted)
+        self.guessButton.setBackgroundImage(UIImage(named: "microphone"), forState: .Normal)
+    }
+    
     func victory()
     {
+        // Update average score
         var newAverage : Double = (defaults.doubleForKey("averageScore") * Double(defaults.integerForKey("timesPlayed")) + Double(numGen.numGuesses)) / Double(defaults.integerForKey("timesPlayed") + 1)
         defaults.setDouble(newAverage, forKey: "averageScore")
         defaults.setInteger(defaults.integerForKey("timesPlayed") + 1, forKey: "timesPlayed")
         
+        // Update stats
         var stats : [String : Int]
         if defaults.dictionaryForKey("stats") == nil
         {
@@ -198,7 +293,7 @@ class ViewController: UIViewController {
         }
         else
         {
-            stats = defaults.dictionaryForKey("stats") as [String: Int]!
+            stats = defaults.dictionaryForKey("stats") as! [String: Int]!
             if defaults.dictionaryForKey("stats") == nil || stats[String(numGen.numGuesses)] == nil
             {
                 stats[String(numGen.numGuesses)] = 1
@@ -209,10 +304,9 @@ class ViewController: UIViewController {
             }
         }
         defaults.setObject(stats, forKey:"stats")
-        println(defaults.dictionaryForKey("stats"))
         
-        
-        let victory = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Victory") as VictoryController
+        // Opens victory screen with numbers and a message
+        let victory = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Victory") as! VictoryController
         presentViewController(victory, animated: false, completion: nil)
         
         if (numGen.numGuesses == 1)
@@ -244,5 +338,65 @@ class ViewController: UIViewController {
         victory.bestLabel.text = String(defaults.integerForKey("fewestGuesses"))
     }
     
+    func pocketsphinxDidReceiveHypothesis(hypothesis: String!, recognitionScore: String!, utteranceID: String!)
+    {
+        println("The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID)
+        self.textbox.text = hypothesis
+        OEPocketsphinxController.sharedInstance().stopListening()
+    }
+    
+    func pocketsphinxDidStartListening()
+    {
+        println("Pocketsphinx is now listening.")
+    }
+    
+    func pocketsphinxDidDetectSpeech()
+    {
+        println("Pocketsphinx has detected speech.")
+    }
+    
+    func pocketsphinxDidDetectFinishedSpeech()
+    {
+        println("Pocketsphinx has detected a period of silence, concluding an utterance.")
+    }
+    
+    func pocketsphinxDidStopListening()
+    {
+        println("Pocketsphinx has stopped listening.")
+        guessButtonAction()
+        self.guessButton.setBackgroundImage(nil, forState: .Normal)
+        self.guessButton.setBackgroundImage(nil, forState: .Highlighted)
+        self.guessButton.setTitle("Guess", forState: .Normal)
+    }
+    
+    func pocketsphinxDidSuspendRecognition()
+    {
+        println("Pocketsphinx has suspended recognition.")
+    }
+    
+    func pocketsphinxDidResumeRecognition()
+    {
+        println("Pocketsphinx has resumed recognition.")
+    }
+    
+    func pocketsphinxDidChangeLanguageModelToFile(newLanguageModelPathAsString: String!, andDictionary newDictionaryPathAsString: String!)
+    {
+        println("Pocketsphinx is now using the following language model: \n%@ and the following dictionary: %@",newLanguageModelPathAsString,newDictionaryPathAsString)
+    }
+    
+    func pocketSphinxContinuousSetupDidFailWithReason(reasonForFailure: String!)
+    {
+        println("Listening setup wasn't successful and returned the failure reason: %@", reasonForFailure)
+    }
+    
+    func pocketSphinxContinuousTeardownDidFailWithReason(reasonForFailure: String!)
+    {
+        println("Listening teardown wasn't successful and returned the failure reason: %@", reasonForFailure)
+    }
+    
+    func testRecognitionCompleted()
+    {
+        println("A test file that was submitted for recognition is now complete.");
+    }
 }
 

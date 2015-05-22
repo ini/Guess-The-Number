@@ -7,8 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		893711D71AEE647300FC1249 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 893711D31AEE647300FC1249 /* AcousticModelEnglish.bundle */; };
+		893711D81AEE647300FC1249 /* AcousticModelSpanish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 893711D41AEE647300FC1249 /* AcousticModelSpanish.bundle */; };
+		893711D91AEE647300FC1249 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893711D51AEE647300FC1249 /* OpenEars.framework */; };
+		893711DA1AEE647300FC1249 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893711D61AEE647300FC1249 /* Slt.framework */; };
+		894B64FD1AE84B7A004FF995 /* barChart.xml in Resources */ = {isa = PBXBuildFile; fileRef = 894B64FC1AE84B7A004FF995 /* barChart.xml */; };
+		894B65181AE84B83004FF995 /* BarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B65001AE84B83004FF995 /* BarChartView.m */; };
+		894B65191AE84B83004FF995 /* BarLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B65021AE84B83004FF995 /* BarLabel.m */; };
+		894B651A1AE84B83004FF995 /* BarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B65051AE84B83004FF995 /* BarView.m */; };
+		894B651B1AE84B83004FF995 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B65091AE84B83004FF995 /* CMPopTipView.m */; };
+		894B651C1AE84B83004FF995 /* UIColor+i7HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B650C1AE84B83004FF995 /* UIColor+i7HexColor.m */; };
+		894B651D1AE84B83004FF995 /* UIViewSizeShortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B650E1AE84B83004FF995 /* UIViewSizeShortcuts.m */; };
+		894B651E1AE84B83004FF995 /* XMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B65111AE84B83004FF995 /* XMLElement.m */; };
+		894B651F1AE84B83004FF995 /* XMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B65131AE84B83004FF995 /* XMLParser.m */; };
+		894B65201AE84B83004FF995 /* XMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B65151AE84B83004FF995 /* XMLParserDelegate.m */; };
+		894B65211AE84B83004FF995 /* PlotChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894B65171AE84B83004FF995 /* PlotChartView.m */; };
+		894B65261AE84CD4004FF995 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894B65251AE84CD4004FF995 /* UIKit.framework */; };
 		8966842A1ABBE3C600198959 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 896684291ABBE3C600198959 /* Images.xcassets */; };
-		896684311ABC9AC800198959 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 896684301ABC9AC800198959 /* info.png */; };
 		896684331ABCA72600198959 /* OptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896684321ABCA72600198959 /* OptionController.swift */; };
 		896684351ABCBB5E00198959 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 896684341ABCBB5E00198959 /* iAd.framework */; };
 		89A78DEF1ABA35110058D4F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A78DEE1ABA35110058D4F2 /* AppDelegate.swift */; };
@@ -17,6 +32,8 @@
 		89A78E051ABA35110058D4F2 /* Guess_The_NumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A78E041ABA35110058D4F2 /* Guess_The_NumberTests.swift */; };
 		89A78E0F1ABA357A0058D4F2 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A78E0E1ABA357A0058D4F2 /* CircleButton.swift */; };
 		89CA9CFB1ABBBCE200DA43A0 /* VictoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CA9CFA1ABBBCE200DA43A0 /* VictoryController.swift */; };
+		89D3C9E51AF046EE00C708C1 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D3C9E41AF046EE00C708C1 /* microphone.png */; };
+		89D3C9E71AF066BF00C708C1 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D3C9E61AF066BF00C708C1 /* info.png */; };
 		89E19CCF1ABD3DF400A5B93D /* thumbs_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E19CCE1ABD3DF400A5B93D /* thumbs_up.png */; };
 		89E19CD21ABD3FAC00A5B93D /* thumbs_sideways.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E19CD01ABD3FAC00A5B93D /* thumbs_sideways.png */; };
 		89E19CD31ABD3FAC00A5B93D /* thumbs_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E19CD11ABD3FAC00A5B93D /* thumbs_down.png */; };
@@ -37,8 +54,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		893711D31AEE647300FC1249 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
+		893711D41AEE647300FC1249 /* AcousticModelSpanish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelSpanish.bundle; sourceTree = "<group>"; };
+		893711D51AEE647300FC1249 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
+		893711D61AEE647300FC1249 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
+		894B64FC1AE84B7A004FF995 /* barChart.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = barChart.xml; sourceTree = "<group>"; };
+		894B64FF1AE84B83004FF995 /* BarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarChartView.h; sourceTree = "<group>"; };
+		894B65001AE84B83004FF995 /* BarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarChartView.m; sourceTree = "<group>"; };
+		894B65011AE84B83004FF995 /* BarLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarLabel.h; sourceTree = "<group>"; };
+		894B65021AE84B83004FF995 /* BarLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarLabel.m; sourceTree = "<group>"; };
+		894B65031AE84B83004FF995 /* BarTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarTypes.h; sourceTree = "<group>"; };
+		894B65041AE84B83004FF995 /* BarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarView.h; sourceTree = "<group>"; };
+		894B65051AE84B83004FF995 /* BarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarView.m; sourceTree = "<group>"; };
+		894B65081AE84B83004FF995 /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
+		894B65091AE84B83004FF995 /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
+		894B650B1AE84B83004FF995 /* UIColor+i7HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+i7HexColor.h"; sourceTree = "<group>"; };
+		894B650C1AE84B83004FF995 /* UIColor+i7HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+i7HexColor.m"; sourceTree = "<group>"; };
+		894B650D1AE84B83004FF995 /* UIViewSizeShortcuts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewSizeShortcuts.h; sourceTree = "<group>"; };
+		894B650E1AE84B83004FF995 /* UIViewSizeShortcuts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewSizeShortcuts.m; sourceTree = "<group>"; };
+		894B65101AE84B83004FF995 /* XMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLElement.h; sourceTree = "<group>"; };
+		894B65111AE84B83004FF995 /* XMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLElement.m; sourceTree = "<group>"; };
+		894B65121AE84B83004FF995 /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
+		894B65131AE84B83004FF995 /* XMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParser.m; sourceTree = "<group>"; };
+		894B65141AE84B83004FF995 /* XMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParserDelegate.h; sourceTree = "<group>"; };
+		894B65151AE84B83004FF995 /* XMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParserDelegate.m; sourceTree = "<group>"; };
+		894B65161AE84B83004FF995 /* PlotChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotChartView.h; sourceTree = "<group>"; };
+		894B65171AE84B83004FF995 /* PlotChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotChartView.m; sourceTree = "<group>"; };
+		894B65251AE84CD4004FF995 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		894B65301AE85075004FF995 /* Guess-The-Number-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Guess-The-Number-Bridging-Header.h"; path = "../Guess-The-Number-Bridging-Header.h"; sourceTree = "<group>"; };
 		896684291ABBE3C600198959 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
-		896684301ABC9AC800198959 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		896684321ABCA72600198959 /* OptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionController.swift; sourceTree = "<group>"; };
 		896684341ABCBB5E00198959 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		89A78DE91ABA35110058D4F2 /* Guess The Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guess The Number.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,7 +95,8 @@
 		89A78E041ABA35110058D4F2 /* Guess_The_NumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess_The_NumberTests.swift; sourceTree = "<group>"; };
 		89A78E0E1ABA357A0058D4F2 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		89CA9CFA1ABBBCE200DA43A0 /* VictoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VictoryController.swift; sourceTree = "<group>"; };
-		89CA9CFC1ABBCFC000DA43A0 /* Confetti.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Confetti.gif; sourceTree = "<group>"; };
+		89D3C9E41AF046EE00C708C1 /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
+		89D3C9E61AF066BF00C708C1 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		89E19CCE1ABD3DF400A5B93D /* thumbs_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_up.png; sourceTree = "<group>"; };
 		89E19CD01ABD3FAC00A5B93D /* thumbs_sideways.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_sideways.png; sourceTree = "<group>"; };
 		89E19CD11ABD3FAC00A5B93D /* thumbs_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_down.png; sourceTree = "<group>"; };
@@ -66,7 +111,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				893711DA1AEE647300FC1249 /* Slt.framework in Frameworks */,
+				894B65261AE84CD4004FF995 /* UIKit.framework in Frameworks */,
 				896684351ABCBB5E00198959 /* iAd.framework in Frameworks */,
+				893711D91AEE647300FC1249 /* OpenEars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,11 +128,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		894B64FB1AE84B7A004FF995 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				894B64FC1AE84B7A004FF995 /* barChart.xml */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		894B64FE1AE84B83004FF995 /* BarChart Library */ = {
+			isa = PBXGroup;
+			children = (
+				894B64FF1AE84B83004FF995 /* BarChartView.h */,
+				894B65001AE84B83004FF995 /* BarChartView.m */,
+				894B65011AE84B83004FF995 /* BarLabel.h */,
+				894B65021AE84B83004FF995 /* BarLabel.m */,
+				894B65031AE84B83004FF995 /* BarTypes.h */,
+				894B65041AE84B83004FF995 /* BarView.h */,
+				894B65051AE84B83004FF995 /* BarView.m */,
+				894B65061AE84B83004FF995 /* External */,
+				894B65161AE84B83004FF995 /* PlotChartView.h */,
+				894B65171AE84B83004FF995 /* PlotChartView.m */,
+			);
+			path = "BarChart Library";
+			sourceTree = "<group>";
+		};
+		894B65061AE84B83004FF995 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				894B65071AE84B83004FF995 /* CMPopTipView */,
+				894B650A1AE84B83004FF995 /* Helpers */,
+				894B650F1AE84B83004FF995 /* XMLParser */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		894B65071AE84B83004FF995 /* CMPopTipView */ = {
+			isa = PBXGroup;
+			children = (
+				894B65081AE84B83004FF995 /* CMPopTipView.h */,
+				894B65091AE84B83004FF995 /* CMPopTipView.m */,
+			);
+			path = CMPopTipView;
+			sourceTree = "<group>";
+		};
+		894B650A1AE84B83004FF995 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				894B650B1AE84B83004FF995 /* UIColor+i7HexColor.h */,
+				894B650C1AE84B83004FF995 /* UIColor+i7HexColor.m */,
+				894B650D1AE84B83004FF995 /* UIViewSizeShortcuts.h */,
+				894B650E1AE84B83004FF995 /* UIViewSizeShortcuts.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		894B650F1AE84B83004FF995 /* XMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				894B65101AE84B83004FF995 /* XMLElement.h */,
+				894B65111AE84B83004FF995 /* XMLElement.m */,
+				894B65121AE84B83004FF995 /* XMLParser.h */,
+				894B65131AE84B83004FF995 /* XMLParser.m */,
+				894B65141AE84B83004FF995 /* XMLParserDelegate.h */,
+				894B65151AE84B83004FF995 /* XMLParserDelegate.m */,
+			);
+			path = XMLParser;
+			sourceTree = "<group>";
+		};
 		8966842D1ABC8BF500198959 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				89CA9CFC1ABBCFC000DA43A0 /* Confetti.gif */,
-				896684301ABC9AC800198959 /* info.png */,
+				89D3C9E41AF046EE00C708C1 /* microphone.png */,
+				89D3C9E61AF066BF00C708C1 /* info.png */,
 				89E19CCE1ABD3DF400A5B93D /* thumbs_up.png */,
 				89E19CD01ABD3FAC00A5B93D /* thumbs_sideways.png */,
 				89E19CD11ABD3FAC00A5B93D /* thumbs_down.png */,
@@ -92,10 +208,23 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		898653341AE927E300D21BA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				893711D31AEE647300FC1249 /* AcousticModelEnglish.bundle */,
+				893711D41AEE647300FC1249 /* AcousticModelSpanish.bundle */,
+				893711D51AEE647300FC1249 /* OpenEars.framework */,
+				893711D61AEE647300FC1249 /* Slt.framework */,
+				894B65251AE84CD4004FF995 /* UIKit.framework */,
+				896684341ABCBB5E00198959 /* iAd.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		89A78DE01ABA35110058D4F2 = {
 			isa = PBXGroup;
 			children = (
-				896684341ABCBB5E00198959 /* iAd.framework */,
+				898653341AE927E300D21BA6 /* Frameworks */,
 				89A78DEB1ABA35110058D4F2 /* Guess The Number */,
 				89A78E011ABA35110058D4F2 /* Guess The NumberTests */,
 				89A78DEA1ABA35110058D4F2 /* Products */,
@@ -114,6 +243,9 @@
 		89A78DEB1ABA35110058D4F2 /* Guess The Number */ = {
 			isa = PBXGroup;
 			children = (
+				894B65301AE85075004FF995 /* Guess-The-Number-Bridging-Header.h */,
+				894B64FE1AE84B83004FF995 /* BarChart Library */,
+				894B64FB1AE84B7A004FF995 /* Data */,
 				89A78DEE1ABA35110058D4F2 /* AppDelegate.swift */,
 				89A78E0E1ABA357A0058D4F2 /* CircleButton.swift */,
 				89A78DF01ABA35110058D4F2 /* ViewController.swift */,
@@ -242,14 +374,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				896684311ABC9AC800198959 /* info.png in Resources */,
+				89D3C9E51AF046EE00C708C1 /* microphone.png in Resources */,
 				89E19CDB1ABF68F100A5B93D /* VictoryMessages.txt in Resources */,
+				893711D71AEE647300FC1249 /* AcousticModelEnglish.bundle in Resources */,
+				893711D81AEE647300FC1249 /* AcousticModelSpanish.bundle in Resources */,
 				8966842A1ABBE3C600198959 /* Images.xcassets in Resources */,
 				89E19CD71ABF626200A5B93D /* Messages.txt in Resources */,
+				894B64FD1AE84B7A004FF995 /* barChart.xml in Resources */,
 				89E19CD31ABD3FAC00A5B93D /* thumbs_down.png in Resources */,
 				89A78DF41ABA35110058D4F2 /* Main.storyboard in Resources */,
 				89E19CCF1ABD3DF400A5B93D /* thumbs_up.png in Resources */,
 				89E19CD91ABF682200A5B93D /* MessagesWrongRange.txt in Resources */,
+				89D3C9E71AF066BF00C708C1 /* info.png in Resources */,
 				89E19CD21ABD3FAC00A5B93D /* thumbs_sideways.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,11 +404,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894B651F1AE84B83004FF995 /* XMLParser.m in Sources */,
+				894B651C1AE84B83004FF995 /* UIColor+i7HexColor.m in Sources */,
+				894B65181AE84B83004FF995 /* BarChartView.m in Sources */,
 				89A78E0F1ABA357A0058D4F2 /* CircleButton.swift in Sources */,
+				894B651D1AE84B83004FF995 /* UIViewSizeShortcuts.m in Sources */,
+				894B65191AE84B83004FF995 /* BarLabel.m in Sources */,
+				894B65211AE84B83004FF995 /* PlotChartView.m in Sources */,
 				89E19CD51ABDCA6E00A5B93D /* StatsController.swift in Sources */,
+				894B651E1AE84B83004FF995 /* XMLElement.m in Sources */,
+				894B651B1AE84B83004FF995 /* CMPopTipView.m in Sources */,
 				89A78DF11ABA35110058D4F2 /* ViewController.swift in Sources */,
 				89CA9CFB1ABBBCE200DA43A0 /* VictoryController.swift in Sources */,
+				894B65201AE84B83004FF995 /* XMLParserDelegate.m in Sources */,
 				896684331ABCA72600198959 /* OptionController.swift in Sources */,
+				894B651A1AE84B83004FF995 /* BarView.m in Sources */,
 				89A78DEF1ABA35110058D4F2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,13 +535,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Guess The Number/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Guess-The-Number-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -404,13 +557,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Guess The Number/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Guess-The-Number-Bridging-Header.h";
 			};
 			name = Release;
 		};

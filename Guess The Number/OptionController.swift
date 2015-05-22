@@ -44,11 +44,10 @@ class OptionController: UIViewController
     func actuallyResetScores()
     {
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setInteger(0, forKey: "fewestGuesses")
-        defaults.setInteger(0, forKey: "mostGuesses")
-        defaults.setInteger(0, forKey: "timesPlayed")
-        defaults.setDouble(0, forKey: "averageScore")
-        defaults.setObject(nil, forKey: "stats")
+        for (key, object) in defaults.dictionaryRepresentation() as! [String: AnyObject]
+        {
+            defaults.setObject(nil, forKey: key)
+        }
         var alert = UIAlertController(title: "Reset Scores", message: "All of your scores have been cleared.", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)

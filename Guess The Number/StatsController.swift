@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StatsController: UIViewController, UITableViewDataSource, UITableViewDelegate
+class StatsController: UIViewController
 {
     let defaults = NSUserDefaults.standardUserDefaults()
     var stats = NSUserDefaults.standardUserDefaults().dictionaryForKey("stats")
@@ -17,16 +17,30 @@ class StatsController: UIViewController, UITableViewDataSource, UITableViewDeleg
     @IBOutlet weak var
     averageLabel: UILabel!
     @IBOutlet weak var worstLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var barChart: BarChartView!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         bestLabel.text = String(defaults.integerForKey("fewestGuesses"))
         worstLabel.text = String(defaults.integerForKey("mostGuesses"))
-        println(defaults.doubleForKey("averageScore"))
-        averageLabel.text = NSString(format: "%.3g", defaults.doubleForKey("averageScore"))
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        averageLabel.text = NSString(format: "%.3g", defaults.doubleForKey("averageScore")) as String
+        if stats != nil
+        {
+            loadBarChartUsingArray()
+        }
+        else
+        {
+            var noStats: UILabel = UILabel(frame: CGRectMake(10, barChart.origin.y, self.view.width - 20, barChart.height))
+            noStats.text = "Try playing the game first before trying to look at your stats, Einstein."
+            noStats.font = bestLabel.font.fontWithSize(30)
+            noStats.textColor = bestLabel.textColor
+            noStats.textAlignment = .Center
+            noStats.lineBreakMode = NSLineBreakMode.ByWordWrapping
+            noStats.numberOfLines = 5
+            self.view.addSubview(noStats)
+            barChart.hidden = true
+        }
     }
     
     override func didReceiveMemoryWarning()
@@ -35,50 +49,36 @@ class StatsController: UIViewController, UITableViewDataSource, UITableViewDeleg
         // Dispose of any resources that can be recreated
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func loadBarChartUsingArray()
     {
-        if (stats?.count != nil)
-        {
-            println(stats!.count)
-            return stats!.count
-        }
-        return 0
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-        let arrayOfGuesses = sorted(stats?.keys.array as [String], {
+        var titles = sorted(stats?.keys.array as! [String], {
             (str1: String, str2: String) -> Bool in
             return str1.toInt() < str2.toInt()
         })
-        var guesses : String
-        if (arrayOfGuesses[indexPath.row] == "1")
+        var values : [String] = [], labelColors = [String](count: stats!.count, repeatedValue: "308034"), colors = labelColors
+        for index in 0 ... stats!.count - 1
         {
-            guesses = "1 Guess : "
+            var val = stats?[titles[index]] as! Int
+            if Double(val) > barChart.maximum
+            {
+                barChart.maximum = Double(val)
+            }
+            values.append(String(val))
         }
-        else
-        {
-            guesses = arrayOfGuesses[indexPath.row] + " Guesses : "
-        }
-        
-        var numTimes : String
-        if (stats?[arrayOfGuesses[indexPath.row]] as Int == 1)
-        {
-            numTimes = "Once"
-        }
-        else if (stats?[arrayOfGuesses[indexPath.row]] as Int == 2)
-        {
-            numTimes = "Twice"
-        }
-        else
-        {
-            numTimes = String(stats?[arrayOfGuesses[indexPath.row]] as Int) + " Times"
-        }
-        cell.textLabel?.text = guesses + numTimes
-        cell.textLabel?.font = bestLabel.font.fontWithSize(25)
-        cell.textLabel?.textColor = bestLabel.textColor
-        return cell
+
+        var array = barChart.createChartDataWithTitles(titles, values: values, colors: colors, labelColors: labelColors)
+        barChart.setupBarViewShape(BarShapeRounded)
+        barChart.setupBarViewStyle(BarStyleFlat)
+        barChart.setupBarViewShadow(BarShadowNone)
+        barChart.setDataWithArray(array, showAxis: DisplayBothAxes, withColor: UIColor(red: 48.0/255.0, green: 128.0/255.0, blue: 52.0/255.0, alpha: 1.0), shouldPlotVerticalLines: true)
+    }
+    
+    func loadbarChartUsingXML()
+    {
+        barChart.setupBarViewShape(BarShapeRounded)
+        barChart.setupBarViewStyle(BarStyleFlat)
+        barChart.setupBarViewShadow(BarShadowNone)
+        barChart.setXmlData(NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("barChart", ofType: "xml")!), showAxis: DisplayBothAxes, withColor: UIColor.clearColor(), shouldPlotVerticalLines: true)
     }
     
     @IBAction func back(sender: AnyObject)

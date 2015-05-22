@@ -11,7 +11,6 @@ import UIKit
 
 class VictoryController: UIViewController
 {
-    
     @IBOutlet weak var newRecord: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var bestLabel: UILabel!
@@ -35,7 +34,7 @@ class VictoryController: UIViewController
     }
     
     @IBAction func playAgain(sender: AnyObject) {
-        let main = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Main") as ViewController
+        let main = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Main") as! ViewController
         presentViewController(main, animated: false, completion: nil)
         main.numGen.generateNewNumber()
     }

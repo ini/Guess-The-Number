@@ -9,31 +9,40 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate
+{
 
     var window: UIWindow?
+    var voiceGen: OELanguageModelGenerator = OELanguageModelGenerator()
+    var lmPath: String? = nil;
+    var dicPath: String? = nil;
+    
+    func setupVoiceGen()
+    {
+        var words: [String] = []
+        for index in 1 ... 100
+        {
+            words.append(String(index))
+        }
+        var name = "NameIWantForMyLanguageModelFiles"
+        var err = voiceGen.generateLanguageModelFromArray(words, withFilesNamed: name, forAcousticModelAtPath: OEAcousticModel.pathToModel("AcousticModelEnglish"))
+        
+        if(err == nil)
+        {
+            lmPath = voiceGen.pathToSuccessfullyGeneratedLanguageModelWithRequestedName("NameIWantForMyLanguageModelFiles")
+            dicPath = voiceGen.pathToSuccessfullyGeneratedDictionaryWithRequestedName("NameIWantForMyLanguageModelFiles")
+        }
+        else
+        {
+            println("Error: %@", err.localizedDescription);
+        }
+    }
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        // Retrieves message text files from the internet
-        var messages = String(contentsOfURL: NSURL(string: "http://sites.google.com/site/insidevelopment/home/messages.txt")!, encoding: NSUTF8StringEncoding, error: nil)
-        var messagesWrongRange = String(contentsOfURL: NSURL(string: "http://sites.google.com/site/insidevelopment/home/messagesWrongRange.txt")!, encoding: NSUTF8StringEncoding, error: nil)
-        var victoryMessages = String(contentsOfURL: NSURL(string: "http://sites.google.com/site/insidevelopment/home/victoryMessages.txt")!, encoding: NSUTF8StringEncoding, error: nil)
-        
-        if (messages != nil)
-        {
-            messages?.writeToFile(NSBundle.mainBundle().pathForResource("Messages", ofType: "txt")!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-        }
-        if (messagesWrongRange != nil)
-        {
-            messagesWrongRange?.writeToFile(NSBundle.mainBundle().pathForResource("MessagesWrongRange", ofType: "txt")!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-        }
-        if (victoryMessages != nil)
-        {
-            victoryMessages?.writeToFile(NSBundle.mainBundle().pathForResource("VictoryMessages", ofType: "txt")!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-        }
-        
+        downloadMessages()
+        setupVoiceGen()
         return true
     }
 
@@ -52,13 +61,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func downloadMessages()
+    {
+        // Retrieves message text files from the internet
+        var strMessages = String(contentsOfURL: NSURL(string: "http://sites.google.com/site/insidevelopment/home/messages.txt")!, encoding: NSUTF8StringEncoding, error: nil)
+        var strMessagesWrongRange = String(contentsOfURL: NSURL(string: "http://sites.google.com/site/insidevelopment/home/messagesWrongRange.txt")!, encoding: NSUTF8StringEncoding, error: nil)
+        var strVictoryMessages = String(contentsOfURL: NSURL(string: "http://sites.google.com/site/insidevelopment/home/victoryMessages.txt")!, encoding: NSUTF8StringEncoding, error: nil)
+        
+        if (strMessages != nil)
+        {
+            strMessages?.writeToFile(NSBundle.mainBundle().pathForResource("Messages", ofType: "txt")!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        }
+        if (strMessagesWrongRange != nil)
+        {
+            strMessagesWrongRange?.writeToFile(NSBundle.mainBundle().pathForResource("MessagesWrongRange", ofType: "txt")!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        }
+        if (strVictoryMessages != nil)
+        {
+            strVictoryMessages?.writeToFile(NSBundle.mainBundle().pathForResource("VictoryMessages", ofType: "txt")!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        }
+    }
 }
 
